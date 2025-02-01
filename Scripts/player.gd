@@ -4,7 +4,7 @@ extends CharacterBody2D
 var speed := 75
 var direction := Vector2(0, 1)
 
-@onready var bullet_scene = preload("res://Scenes/bullet.tscn")
+@onready var bullet_scene := preload("res://Scenes/bullet.tscn")
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var bullet_spawn: Marker2D = $BulletSpawn
 
