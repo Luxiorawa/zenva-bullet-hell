@@ -16,3 +16,8 @@ shape = SubResource("RectangleShape2D_4e365")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_q65t8")
 hframes = 3
+
+[node name="BulletSpawn" type="Marker2D" parent="."]
+position = Vector2(0, 10)
+
+[node name="Bullets" type="Node" parent="."]
