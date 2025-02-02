@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=4 uid="uid://dqaw8512ks3tf"]
+[gd_scene load_steps=5 format=4 uid="uid://dqaw8512ks3tf"]
 
 [ext_resource type="TileSet" uid="uid://dk2eff56wmkig" path="res://Ressources/tileset.tres" id="1_bvxas"]
 [ext_resource type="PackedScene" uid="uid://bi5evmoiyo385" path="res://Scenes/Player/player.tscn" id="2_nm66r"]
-[ext_resource type="PackedScene" uid="uid://ba1hsphrx822h" path="res://Scenes/Enemies/snake.tscn" id="3_xdl3y"]
+[ext_resource type="Script" path="res://Scripts/portal.gd" id="4_6t1vy"]
+[ext_resource type="Texture2D" uid="uid://bkwansoi1h7e8" path="res://Assets/spawner.png" id="5_kh4yc"]
 
 [node name="World" type="Node2D"]
 
@@ -15,4 +16,23 @@ rendering_quadrant_size = 32
 [node name="Player" parent="." instance=ExtResource("2_nm66r")]
 position = Vector2(595, 340)
 
-[node name="Snake" parent="." instance=ExtResource("3_xdl3y")]
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(2, 2)
+limit_left = 0
+limit_top = 0
+limit_right = 1150
+limit_bottom = 650
+limit_smoothed = true
+position_smoothing_enabled = true
+
+[node name="Portal" type="Node2D" parent="."]
+script = ExtResource("4_6t1vy")
+
+[node name="Sprite2D" type="Sprite2D" parent="Portal"]
+position = Vector2(462, 340)
+texture = ExtResource("5_kh4yc")
+
+[node name="Timer" type="Timer" parent="Portal"]
+autostart = true
+
+[connection signal="timeout" from="Portal/Timer" to="Portal" method="_on_timer_timeout"]
