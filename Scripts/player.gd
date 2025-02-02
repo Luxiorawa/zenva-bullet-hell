@@ -7,6 +7,7 @@ var direction := Vector2(0, 1)
 @onready var bullet_scene := preload("res://Scenes/bullet.tscn")
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var bullet_spawn: Marker2D = $BulletSpawn
+@onready var bullet_pool: BulletPool = $Bullets
 
 func _physics_process(_delta: float) -> void:
     var input_direction := Vector2(Input.get_axis("Left", "Right"), Input.get_axis("Up", "Down")).normalized()
@@ -31,10 +32,12 @@ func _physics_process(_delta: float) -> void:
     var offset_from_sprite := 10
     bullet_spawn.position = direction * offset_from_sprite
     if Input.is_action_just_pressed("Shoot"):
-        var bullet: Bullet = bullet_scene.instantiate()
+        var bullet: Bullet = bullet_pool.pull_bullet_from_pool()
         bullet.velocity = direction * 140
         bullet.global_position = bullet_spawn.global_position
-        $Bullets.add_child(bullet)
+        bullet.show()
+        bullet.set_process(true)
+        bullet.set_physics_process(true)
 
     velocity = input_direction * speed
 
