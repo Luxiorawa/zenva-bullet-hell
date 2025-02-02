@@ -28,3 +28,7 @@ func pull_bullet_from_pool() -> Bullet:
 		bullet_pool.remove_at(0)
 
 	return bullet
+
+func reset_bullet(bullet: Bullet) -> void:
+	bullet.position = Vector2(-1000, -1000)
+	bullet.hide()
