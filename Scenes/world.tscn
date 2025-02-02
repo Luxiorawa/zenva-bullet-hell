@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=4 uid="uid://dqaw8512ks3tf"]
+[gd_scene load_steps=4 format=4 uid="uid://dqaw8512ks3tf"]
 
 [ext_resource type="TileSet" uid="uid://dk2eff56wmkig" path="res://Ressources/tileset.tres" id="1_bvxas"]
-[ext_resource type="PackedScene" uid="uid://bi5evmoiyo385" path="res://Scenes/player.tscn" id="2_nm66r"]
+[ext_resource type="PackedScene" uid="uid://bi5evmoiyo385" path="res://Scenes/Player/player.tscn" id="2_nm66r"]
+[ext_resource type="PackedScene" uid="uid://ba1hsphrx822h" path="res://Scenes/Enemies/snake.tscn" id="3_xdl3y"]
 
 [node name="World" type="Node2D"]
 
@@ -13,3 +14,5 @@ rendering_quadrant_size = 32
 
 [node name="Player" parent="." instance=ExtResource("2_nm66r")]
 position = Vector2(595, 340)
+
+[node name="Snake" parent="." instance=ExtResource("3_xdl3y")]

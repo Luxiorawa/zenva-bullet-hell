@@ -1,7 +1,7 @@
 class_name BulletPool
 extends Node
 
-var bullet_scene := preload("res://Scenes/bullet.tscn")
+var bullet_scene := preload("res://Scenes/Player/bullet.tscn")
 var pool_size := 10
 var bullet_pool := []
 
