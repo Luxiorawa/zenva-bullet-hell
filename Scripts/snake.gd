@@ -36,3 +36,8 @@ func reset_mob(body: Node) -> void:
 	animation.play("death")
 	await animation.animation_finished
 	portal.reset_mob(body)
+
+func _on_player_detection_body_entered(body: Node2D) -> void:
+	if body.name == "Player":
+		if visible and body.visible:
+			Game.player_hp -= 1
