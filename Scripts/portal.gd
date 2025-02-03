@@ -29,10 +29,8 @@ func pull_mob_from_pool() -> Node:
 	return mob
 
 func reset_mob(mob: Node) -> void:
-	mob.position = Vector2(-10000, -10000)
+	mob.global_position = Vector2(-10000, -10000)
 	mob.is_alive = false
-	mob.get_node("CollisionShape2D").disabled = true
-	mob.hide()
 
 func _on_timer_timeout() -> void:
 	var new_mob = pull_mob_from_pool()
