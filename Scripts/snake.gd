@@ -39,6 +39,7 @@ func reset_mob(body: Node) -> void:
 	var portal: Portal = get_parent()
 	speed = 0
 	is_alive = false
+	Game.score += 1
 	animation.show()
 	animation.play("death")
 	await animation.animation_finished

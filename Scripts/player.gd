@@ -1,7 +1,7 @@
 class_name Player
 extends CharacterBody2D
 
-var speed := 75
+var speed := 100
 var direction := Vector2(0, 1)
 
 @onready var bullet_scene := preload("res://Scenes/Player/bullet.tscn")

@@ -1,9 +1,17 @@
-[gd_scene load_steps=5 format=4 uid="uid://dqaw8512ks3tf"]
+[gd_scene load_steps=9 format=4 uid="uid://dqaw8512ks3tf"]
 
 [ext_resource type="TileSet" uid="uid://dk2eff56wmkig" path="res://Ressources/tileset.tres" id="1_bvxas"]
 [ext_resource type="PackedScene" uid="uid://bi5evmoiyo385" path="res://Scenes/Player/player.tscn" id="2_nm66r"]
 [ext_resource type="Script" path="res://Scripts/portal.gd" id="4_6t1vy"]
+[ext_resource type="Script" path="res://Scripts/player_hp.gd" id="5_ghu8o"]
 [ext_resource type="Texture2D" uid="uid://bkwansoi1h7e8" path="res://Assets/spawner.png" id="5_kh4yc"]
+[ext_resource type="Script" path="res://Scripts/score.gd" id="6_sqv3w"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wte4a"]
+bg_color = Color(1, 0.0862745, 0.0823529, 0.784314)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j6b8t"]
+bg_color = Color(0, 0.866667, 0.101961, 1)
 
 [node name="World" type="Node2D"]
 
@@ -34,5 +42,28 @@ texture = ExtResource("5_kh4yc")
 
 [node name="Timer" type="Timer" parent="Portal"]
 autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PlayerHP" type="ProgressBar" parent="CanvasLayer"]
+offset_left = 1040.0
+offset_top = 15.0
+offset_right = 1139.0
+offset_bottom = 27.0
+theme_override_styles/background = SubResource("StyleBoxFlat_wte4a")
+theme_override_styles/fill = SubResource("StyleBoxFlat_j6b8t")
+max_value = 5.0
+step = 1.0
+value = 3.0
+show_percentage = false
+script = ExtResource("5_ghu8o")
+
+[node name="Score" type="Label" parent="CanvasLayer"]
+offset_left = 1073.0
+offset_top = 32.0
+offset_right = 1138.0
+offset_bottom = 55.0
+text = "Score : 0"
+script = ExtResource("6_sqv3w")
 
 [connection signal="timeout" from="Portal/Timer" to="Portal" method="_on_timer_timeout"]
