@@ -37,6 +37,8 @@ func _physics_process(_delta: float) -> void:
 
 func reset_mob(body: Node) -> void:
 	var portal: Portal = get_parent()
+	speed = 0
+	is_alive = false
 	animation.show()
 	animation.play("death")
 	await animation.animation_finished
