@@ -1,21 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://c0yvgmi2ilv5u"]
+[gd_scene load_steps=5 format=3 uid="uid://c5bpqqrgtj3ph"]
 
-[ext_resource type="Script" path="res://Scripts/bullet.gd" id="1_282f4"]
-[ext_resource type="Texture2D" uid="uid://dn1n8xt1xli3u" path="res://Assets/enemy_bullet.png" id="2_87k5g"]
+[ext_resource type="Script" path="res://Scripts/ai_bullet.gd" id="1_bl6jk"]
+[ext_resource type="Texture2D" uid="uid://bkvj2v7p3gn3s" path="res://Assets/player_bullet.png" id="1_fh8kf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_drsv4"]
 radius = 6.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uwa7i"]
-radius = 6.0
+radius = 7.07107
 
 [node name="Bullet" type="CharacterBody2D"]
 collision_layer = 0
 collision_mask = 0
-script = ExtResource("1_282f4")
+script = ExtResource("1_bl6jk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_87k5g")
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("1_fh8kf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_drsv4")
@@ -23,7 +24,6 @@ debug_color = Color(0.452326, 0.454269, 0.987607, 0.42)
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_uwa7i")

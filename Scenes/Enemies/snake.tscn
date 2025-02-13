@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ba1hsphrx822h"]
+[gd_scene load_steps=13 format=3 uid="uid://ba1hsphrx822h"]
 
 [ext_resource type="Texture2D" uid="uid://qvqin272txnk" path="res://Assets/monster sprites/guardian_serpent_old.png" id="1_maq8g"]
 [ext_resource type="Script" path="res://Scripts/snake.gd" id="1_r4cvy"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://btjqn5doek0lu" path="res://Assets/enemy death animation/enemy_death_1.png" id="4_himaf"]
 [ext_resource type="Texture2D" uid="uid://5io3qr4p6iym" path="res://Assets/enemy death animation/enemy_death_2.png" id="5_a73hn"]
 [ext_resource type="Texture2D" uid="uid://mem5hnyt36ow" path="res://Assets/enemy death animation/enemy_death_3.png" id="6_snhsj"]
+[ext_resource type="Script" path="res://Scripts/ai_bullet_pool.gd" id="7_pelrs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bn8uo"]
 size = Vector2(25, 10)
@@ -76,4 +77,15 @@ frame_progress = 0.418472
 position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_ta55x")
 
+[node name="Bullets" type="Node" parent="."]
+script = ExtResource("7_pelrs")
+
+[node name="BulletSpawn" type="Marker2D" parent="."]
+position = Vector2(-10, -11)
+
+[node name="ShootBullet" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
 [connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
+[connection signal="timeout" from="ShootBullet" to="." method="_on_shoot_bullet_timeout"]
